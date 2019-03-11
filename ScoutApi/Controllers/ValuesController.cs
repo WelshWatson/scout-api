@@ -7,9 +7,10 @@ using System.Web.Http;
 
 namespace ScoutApi.Controllers
 {
+    [RoutePrefix("api/")]
     public class ValuesController : ApiController
     {
-        // GET api/values
+        [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
