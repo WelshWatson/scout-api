@@ -13,9 +13,7 @@ namespace ScoutApi
         {
             var thisAssembly = typeof(SwaggerConfig).Assembly;
 
-            GlobalConfiguration.Configuration
-                .EnableSwagger(c => c.SingleApiVersion("v1", "ScoutApi"))
-                .EnableSwaggerUi();
+            GlobalConfiguration.Configuration.EnableSwagger(c => c.SingleApiVersion("v1", "ScoutApi")).EnableSwaggerUi();
         }
     }
 }

@@ -26,7 +26,14 @@ namespace ScoutApi.Controllers
             data.score = null;
             data.members = null;
 
-            string connStr = "server=38fea24f2847fa7519001be390c98ae0acafe387;user=joem;database=tracking_locations;port=3306;password=wP5sdnRFPF9Cl6HT";
+            string server = "localhost";
+            string database = "ETS";
+            string port = "3306";
+            string uid = "joem";
+            string password = "wP5sdnRFPF9Cl6HT";
+
+            string connStr = $"SERVER={server};DATABASE={database};PORT={port};USER={uid};PASSWORD={password};";
+
             var conn = new MySqlConnection(connStr);
             try
             {
@@ -50,14 +57,9 @@ namespace ScoutApi.Controllers
                     $"  {data.members})";
 
                 MySqlCommand sqlCommand = new MySqlCommand(sql, conn);
-                MySqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
 
-                while (sqlDataReader.Read())
-                {
-                    Console.WriteLine(sqlDataReader[0] + " -- " + sqlDataReader[1]);
-                }
-
-                sqlDataReader.Close();
+                //Execute command
+                sqlCommand.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
